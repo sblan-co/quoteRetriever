@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import jakarta.inject.Inject
 
 @MicronautTest
-class QuoteRetrieverTest {
+class DefaultApplicationTest {
 
     @Inject
     lateinit var application: EmbeddedApplication<*>
@@ -15,5 +15,4 @@ class QuoteRetrieverTest {
     fun testItWorks() {
         Assertions.assertTrue(application.isRunning)
     }
-
 }
