@@ -1,0 +1,3 @@
+#Sun Dec 03 13:30:47 UTC 2023
+micronaut.application.name=quoteRetriever
+mongodb.uri=mongodb://yourDatabaseUri:port/yourDatabaseName
