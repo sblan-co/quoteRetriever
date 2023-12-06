@@ -1,6 +1,6 @@
-package com.sblanco.repository
+package com.sblanco.quote.repository
 
-import com.sblanco.model.Quote
+import com.sblanco.quote.model.Quote
 import io.micronaut.core.annotation.NonNull
 import io.micronaut.data.mongodb.annotation.MongoRepository
 import io.micronaut.data.repository.CrudRepository

@@ -1,7 +1,7 @@
-package com.sblanco.service
+package com.sblanco.quote.service
 
-import com.sblanco.model.Quote
-import com.sblanco.repository.QuoteRepository
+import com.sblanco.quote.model.Quote
+import com.sblanco.quote.repository.QuoteRepository
 import io.micronaut.core.annotation.NonNull
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.exceptions.HttpStatusException

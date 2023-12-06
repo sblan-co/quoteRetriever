@@ -1,7 +1,7 @@
 package com.sblanco
 
-import com.sblanco.model.Quote
-import com.sblanco.service.QuoteService
+import com.sblanco.quote.model.Quote
+import com.sblanco.quote.service.QuoteService
 import io.micronaut.context.annotation.Replaces
 import io.micronaut.context.annotation.Requires
 import io.micronaut.http.HttpStatus

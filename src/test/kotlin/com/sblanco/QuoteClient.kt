@@ -1,6 +1,6 @@
 package com.sblanco
 
-import com.sblanco.model.Quote
+import com.sblanco.quote.model.Quote
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*

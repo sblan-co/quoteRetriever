@@ -1,4 +1,4 @@
-package com.sblanco.model
+package com.sblanco.quote.model
 
 import io.micronaut.data.annotation.GeneratedValue
 import io.micronaut.data.annotation.Id
