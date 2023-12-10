@@ -1,7 +1,7 @@
 package com.sblanco
 
 import com.sblanco.model.Quote
-import com.sblanco.service.QuotesServiceMongo
+import com.sblanco.service.QuotesService
 import io.micronaut.context.annotation.Replaces
 import io.micronaut.context.annotation.Requires
 import io.micronaut.http.HttpStatus
@@ -67,7 +67,7 @@ class QuotesControllerTest
 
 
     @Singleton
-    @Replaces(QuotesServiceMongo::class)
+    @Replaces(QuotesService::class)
     @Requires(property = "spec.name", value = "controller-isolation")
     class QuotesControllerMock : QuotesClient {
         private var quoteList: List<Quote> = emptyList()
