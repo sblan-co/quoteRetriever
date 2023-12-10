@@ -15,7 +15,7 @@ class QuotesController (
     fun create(@Body quoteRequest: Quote) : Quote = quotesService.create(quoteRequest)
 
     @Get
-    fun list(): Iterable<Quote> = quotesService.list()
+    fun list(): List<Quote> = quotesService.list()
 
     @Get("/{id}")
     fun findById(@PathVariable id: String): Quote {
