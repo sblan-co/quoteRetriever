@@ -2,23 +2,22 @@ package com.sblanco
 
 import com.sblanco.model.Quote
 import io.micronaut.http.HttpStatus
-import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 import io.micronaut.http.client.annotation.Client
 
-@Client("/quote")
-interface QuoteClient {
+@Client("/quotes")
+interface QuotesClient {
 
-    @Post(value = "/create", processes = [MediaType.APPLICATION_JSON])
+    @Post
     @Status(HttpStatus.CREATED)
     fun create(@Body quoteRequest: Quote) : Quote
 
-    @Get("/list")
-    fun list(): Iterable<Quote>
+    @Get
+    fun list(): List<Quote>
 
     @Get("/{id}")
     fun findById(@PathVariable id: String): Quote
 
-    @Get("/q")
-    fun findByAuthor(@QueryValue author: String): Iterable<Quote>
+    @Get("author={author}")
+    fun findByAuthor(@QueryValue author: String): List<Quote>
 }

@@ -1,7 +1,7 @@
 package com.sblanco
 
 import com.sblanco.model.Quote
-import com.sblanco.service.QuoteService
+import com.sblanco.service.QuotesService
 import io.micronaut.context.annotation.Replaces
 import io.micronaut.context.annotation.Requires
 import io.micronaut.http.HttpStatus
@@ -11,10 +11,10 @@ import jakarta.inject.Singleton
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-class QuoteControllerTest
+class QuotesControllerTest
 {
     @Inject
-    val quoteClient = QuoteControllerMock()
+    val quoteClient = QuotesControllerMock()
 
     @Test
     fun emptyDatabaseContainsNoQuote() {
@@ -56,28 +56,28 @@ class QuoteControllerTest
         val quote1 = Quote(quote = "quote1", author = "author1", genre = "genre1")
         val quote2 = Quote(quote = "quote2", author = "author2", genre = "genre2")
         val quote3 = Quote(quote = "quote3", author = "author2", genre = "genre3")
-        val expectedQuotes = listOf(quote2, quote3).asIterable()
+        val expectedQuotes = listOf(quote2, quote3)
         quoteClient.create(quote1)
         quoteClient.create(quote2)
         quoteClient.create(quote3)
 
-        val quotes: Iterable<Quote> = quoteClient.findByAuthor("author2")
+        val quotes: List<Quote> = quoteClient.findByAuthor("author2")
         Assertions.assertEquals(expectedQuotes, quotes)
     }
 
 
     @Singleton
-    @Replaces(QuoteService::class)
+    @Replaces(QuotesService::class)
     @Requires(property = "spec.name", value = "controller-isolation")
-    class QuoteControllerMock : QuoteClient {
-        private var quoteList: Iterable<Quote> = emptyList()
+    class QuotesControllerMock : QuotesClient {
+        private var quoteList: List<Quote> = emptyList()
 
         override fun create(quoteRequest: Quote): Quote {
             quoteList = quoteList.plus(quoteRequest)
             return quoteRequest
         }
 
-        override fun list(): Iterable<Quote> {
+        override fun list(): List<Quote> {
             return quoteList
         }
 
@@ -91,8 +91,8 @@ class QuoteControllerTest
             }
         }
 
-        override fun findByAuthor(author: String): Iterable<Quote> {
-            return quoteList.filter { it.author == author }.asIterable()
+        override fun findByAuthor(author: String): List<Quote> {
+            return quoteList.filter { it.author == author }
         }
     }
 }
